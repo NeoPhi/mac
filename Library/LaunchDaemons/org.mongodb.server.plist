@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+Build/Install:
+
+tar -zvxf mongodb-osx-x86_64-ver.tgz
+sudo mv mongodb-osx-x86_64-ver/bin/* /usr/local/bin/
+sudo mkdir /var/mongodb/
+sudo mkdir /var/log/mongodb/
+
+sudo launchctl load /Library/LaunchDaemons/org.mongodb.server.plist
+sudo launchctl start org.mongodb.server
+-->
+<dict>
+  <key>Label</key>
+  <string>org.mongodb.server</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/mongod</string>
+    <string>run</string>
+    <string>--dbpath=/var/mongodb</string>
+    <string>--port</string>
+    <string>27017</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>WorkingDirectory</key>
+  <string>/usr/local/bin</string>
+  <key>StandardErrorPath</key>
+  <string>/var/log/mongodb/error.log</string>
+  <key>StandardOutPath</key>
+  <string>/var/log/mongodb/output.log</string>
+</dict>
+</plist>

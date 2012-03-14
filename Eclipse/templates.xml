@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template autoinsert="true" context="java" deleted="false" description="After for a class" enabled="true" name="after">    @After
+    public void after() throws Exception {
+        ${:import(org.junit.After)}${cursor}
+    }
+</template>
+<template autoinsert="true" context="java" deleted="false" description="Before for a class" enabled="true" name="before">    @Before
+    public void before() throws Exception {
+        ${:import(org.junit.Before)}${cursor}
+    }
+</template>
+<template autoinsert="true" context="java" deleted="false" description="Context expectation block" enabled="true" name="context">context.checking(new Expectations() {
+    {
+        ${:import(org.jmock.Expectations)}${cursor}
+    }
+});
+</template>
+<template autoinsert="true" context="java" deleted="false" description="Will ReturnValue" enabled="true" name="will">will(returnValue(${cursor}));</template>
+<template autoinsert="true" context="java" deleted="false" description="Will ThrowException" enabled="true" name="will">${:import(com.brightcove.lang.ExpectedException)}
+will(throwException(new ExpectedException(${cursor})));</template>
+</templates>

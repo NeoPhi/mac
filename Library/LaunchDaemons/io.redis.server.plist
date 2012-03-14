@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+Build/Install:
+
+tar -zvxf redis-ver.tar.gz
+cd redis-ver
+make
+sudo make install
+sudo mkdir /var/redis/
+sudo mkdir /etc/redis/
+sudo mkdir /var/log/redis/
+
+sudo launchctl load /Library/LaunchDaemons/io.redis.server.plist
+sudo launchctl start io.redis.server
+-->
+<dict>
+  <key>Label</key>
+  <string>io.redis.server</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/redis-server</string>
+    <string>/etc/redis/redis.conf</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>WorkingDirectory</key>
+  <string>/usr/local/bin</string>
+  <key>StandardErrorPath</key>
+  <string>/var/log/redis/error.log</string>
+  <key>StandardOutPath</key>
+  <string>/var/log/redis/output.log</string>
+</dict>
+</plist>
